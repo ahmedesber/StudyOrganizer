@@ -1,11 +1,11 @@
-# ok let's get the imports out of the way first
+#imports
 import tkinter as tk
 from tkinter import messagebox, simpledialog, ttk
 import datetime
 import os
 
-# using a simple .txt file for now (might change later)
-data_file = "study_data.txt"   # todo: move this into config maybe
+# using a simple .txt file
+data_file = "study_data.txt"   
 
 
 # load previously saved study tasks (if any)
@@ -18,7 +18,6 @@ def load_tasks():
                 # expected order: subject | task | date | priority | status
                 if len(bits) == 5:
                     sub, task, dt, pr, stat = bits
-                    # I should probably validate date here... maybe later
                     tasks_list.append({
                         "sub": sub,
                         "task": task,
@@ -34,7 +33,7 @@ def save_tasks():
     with open(data_file, "w") as f:
         for t in tasks:
             f.write(f"{t['sub']} | {t['task']} | {t['date']} | {t['prio']} | {t['status']}\n")
-    print("saved data")  # left for checking
+    print("saved data")  
 
 
 # add task
